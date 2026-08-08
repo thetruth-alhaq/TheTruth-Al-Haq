@@ -36,6 +36,9 @@ jobs:
       - name: Install CocoaPods
         run: gem install cocoapods
 
+      - name: Install Fastlane
+        run: gem install fastlane
+
       - name: Setup Expo
         uses: expo/expo-github-action@v8
         with:
