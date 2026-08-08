@@ -110,12 +110,7 @@
     ],
     "scheme": "alhaq",
     "updates": {
-      "url": "https://u.expo.dev/2dbd2e64-7e69-44c1-923c-36c25a11a44d",
-      "codeSigningCertificate": "keys/update-public-key.pem",
-      "codeSigningMetadata": {
-        "keyid": "main",
-        "alg": "rsa-v1_5-sha256"
-      }
+      "url": "https://u.expo.dev/2dbd2e64-7e69-44c1-923c-36c25a11a44d"
     },
     "runtimeVersion": {
       "policy": "sdkVersion"
