@@ -409,3 +409,7 @@
 
 #### Files Modified
 - `src/services/ruqyahAudio.ts` — Added `userPausedFromLockScreen` flag, `setupStatusListener()`, updated `handleAppStateChange`, `pauseAudio`, `resumeAudio`, `destroyPlayer`
+
+#### v1.4.1 Builds
+- **iOS IPA**: ✅ SUCCESS — https://expo.dev/accounts/majmod/projects/the-truth-al-haq/builds/1e9246c6-fd31-44d4-bb01-077316f3ae7c
+- **Android APK**: ✅ SUCCESS — https://github.com/MahmoudMousaSharaf/QuranApp/releases/download/v1.4.1/app-release.apk
