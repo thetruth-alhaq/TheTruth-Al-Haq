@@ -14,7 +14,7 @@ on:
 
 jobs:
   build-ios:
-    name: Build iOS IPA
+    name: Build iOS IPA (Local)
     runs-on: macos-latest
     timeout-minutes: 60
     steps:
@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Setup Ruby (for fastlane/cocoapods)
+      - name: Setup Ruby (for CocoaPods)
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.2'
@@ -36,56 +36,23 @@ jobs:
       - name: Install CocoaPods
         run: gem install cocoapods
 
-      - name: Generate native iOS project
-        run: npx expo prebuild --platform ios --clean
+      - name: Setup Expo
+        uses: expo/expo-github-action@v8
+        with:
+          expo-version: latest
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Copy export options
-        run: cp ExportOptions.plist ios/ExportOptions.plist
-
-      - name: Install pods
-        working-directory: ios
-        run: pod install
-
-      - name: Build IPA (ad-hoc signed)
-        working-directory: ios
+      - name: Build IPA locally (uses EAS credentials, no cloud credits)
         run: |
-          # Find workspace and scheme dynamically
-          WORKSPACE=$(ls -d *.xcworkspace 2>/dev/null | head -1)
-          if [ -z "$WORKSPACE" ]; then
-            echo "=== No xcworkspace found ==="
-            ls -la
-            exit 1
-          fi
-          SCHEME=$(xcodebuild -list -workspace "$WORKSPACE" 2>/dev/null | grep -A1 "Schemes:" | tail -1 | xargs)
-          echo "=== Workspace: $WORKSPACE, Scheme: $SCHEME ==="
-
-          # Build archive (unsigned for internal testing)
-          xcodebuild \
-            -workspace "$WORKSPACE" \
-            -scheme "$SCHEME" \
-            -configuration Release \
-            -archivePath build/TheTruthAlHaq.xcarchive \
-            -destination "generic/platform=iOS" \
-            CODE_SIGNING_ALLOWED=NO \
-            CODE_SIGNING_REQUIRED=NO \
-            archive 2>&1 | tee xcode-output.txt
-
-          # Export IPA (unsigned for sideloading)
-          mkdir -p build/output
-          xcodebuild \
-            -exportArchive \
-            -archivePath build/TheTruthAlHaq.xcarchive \
-            -exportOptionsPlist ExportOptions.plist \
-            -exportPath build/output \
-            CODE_SIGNING_ALLOWED=NO \
-            CODE_SIGNING_REQUIRED=NO 2>&1 | tee -a xcode-output.txt
-
-          if [ -f build/output/*.ipa ]; then
+          mkdir -p build-output
+          eas build --platform ios --profile preview --local --non-interactive --output=build-output/TheTruthAlHaq.ipa 2>&1 | tee build-output/eas-build-log.txt
+          if [ -f build-output/TheTruthAlHaq.ipa ]; then
             echo "=== IPA BUILD SUCCEEDED ==="
-            ls -la build/output/*.ipa
+            ls -la build-output/TheTruthAlHaq.ipa
           else
             echo "=== IPA BUILD FAILED ==="
-            tail -100 xcode-output.txt
+            tail -100 build-output/eas-build-log.txt
             exit 1
           fi
 
@@ -94,12 +61,12 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ios-build-logs
-          path: ios/xcode-output.txt
+          path: build-output/eas-build-log.txt
 
       - name: Upload IPA artifact
         if: success()
         uses: actions/upload-artifact@v4
         with:
           name: quran-app-ipa
-          path: ios/build/output/*.ipa
+          path: build-output/*.ipa
           retention-days: 30
