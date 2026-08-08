@@ -28,8 +28,13 @@ const AboutUsScreen: React.FC<AboutUsScreenProps> = ({ onBack }) => {
     if (!needsTranslation) return;
     translateUI([
       'Our mission is to provide a comprehensive Quran app for every Muslim in the world. The app includes the complete Quran in Arabic and English, Azkar, prayer times, Qibla direction, Hadith, scientific miracles, Prophet\'s Sunnah, and answers to common questions about Islam.',
-      'Our Third Project',
     ]);
+    // Also translate the upcomingProjectsDesc for non-Arabic, non-English languages
+    if (appLanguage !== 'ar' && appLanguage !== 'en') {
+      translateUI([
+        'We are working on three innovative projects designed to bring ease and benefit to society. We will announce them soon, Insha Allah.',
+      ]);
+    }
   }, [appLanguage, needsTranslation]);
 
   const openLink = (url: string) => {
@@ -89,59 +94,17 @@ const AboutUsScreen: React.FC<AboutUsScreenProps> = ({ onBack }) => {
           <Ionicons name="open-outline" size={20} color={c.primary} />
         </TouchableOpacity>
 
-        {/* Project 1 */}
-        <TouchableOpacity
-          style={[styles.linkCard, { backgroundColor: c.surface, borderBottomColor: c.border }]}
-          onPress={() => openLink('https://shegoz.top')}
-          activeOpacity={0.7}
-        >
-          <View style={[styles.linkIcon, { backgroundColor: c.primary }]}>
-            <Ionicons name="globe-outline" size={28} color="#fff" />
-          </View>
-          <View style={styles.linkInfo}>
-            <Text style={[styles.linkTitle, { color: c.text }]}>
-              {isArabicUI ? 'مشروعنا الأول' : ui(t('ourFirstProject'))}
-            </Text>
-            <Text style={[styles.linkUrl, { color: c.textSecondary }]}>shegoz.top</Text>
-          </View>
-          <Ionicons name="open-outline" size={20} color={c.primary} />
-        </TouchableOpacity>
-
-        {/* Project 2 */}
-        <TouchableOpacity
-          style={[styles.linkCard, { backgroundColor: c.surface, borderBottomColor: c.border }]}
-          onPress={() => openLink('https://guidano.us')}
-          activeOpacity={0.7}
-        >
-          <View style={[styles.linkIcon, { backgroundColor: c.primary }]}>
-            <Ionicons name="globe-outline" size={28} color="#fff" />
-          </View>
-          <View style={styles.linkInfo}>
-            <Text style={[styles.linkTitle, { color: c.text }]}>
-              {isArabicUI ? 'مشروعنا الثاني' : ui(t('ourSecondProject'))}
-            </Text>
-            <Text style={[styles.linkUrl, { color: c.textSecondary }]}>guidano.us</Text>
-          </View>
-          <Ionicons name="open-outline" size={20} color={c.primary} />
-        </TouchableOpacity>
-
-        {/* Project 3 */}
-        <TouchableOpacity
-          style={[styles.linkCard, { backgroundColor: c.surface, borderBottomColor: c.border }]}
-          onPress={() => openLink('https://learnvexo.com')}
-          activeOpacity={0.7}
-        >
-          <View style={[styles.linkIcon, { backgroundColor: c.primary }]}>
-            <Ionicons name="globe-outline" size={28} color="#fff" />
-          </View>
-          <View style={styles.linkInfo}>
-            <Text style={[styles.linkTitle, { color: c.text }]}>
-              {isArabicUI ? 'مشروعنا الثالث' : ui('Our Third Project')}
-            </Text>
-            <Text style={[styles.linkUrl, { color: c.textSecondary }]}>learnvexo.com</Text>
-          </View>
-          <Ionicons name="open-outline" size={20} color={c.primary} />
-        </TouchableOpacity>
+        {/* Upcoming Projects */}
+        <View style={[styles.section, { backgroundColor: c.surface }]}>
+          <Text style={[styles.sectionTitle, { color: c.primary }]}>
+            {isArabicUI ? 'مشاريعنا القادمة' : ui(t('upcomingProjects'))}
+          </Text>
+          <Text style={[styles.sectionText, { color: c.textSecondary }]}>
+            {isArabicUI
+              ? 'نعمل على ثلاثة مشاريع مبتكرة تهدف إلى تسهيل الحياة وإفادة المجتمع. سنعلن عنها قريباً، إن شاء الله.'
+              : ui('We are working on three innovative projects designed to bring ease and benefit to society. We will announce them soon, Insha Allah.')}
+          </Text>
+        </View>
 
         {/* Version */}
         <Text style={[styles.version, { color: c.textSecondary }]}>{ui(t('versionLabel'))}</Text>

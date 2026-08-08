@@ -413,3 +413,22 @@
 #### v1.4.1 Builds
 - **iOS IPA**: ✅ SUCCESS — https://expo.dev/accounts/majmod/projects/the-truth-al-haq/builds/1e9246c6-fd31-44d4-bb01-077316f3ae7c
 - **Android APK**: ✅ SUCCESS — https://github.com/MahmoudMousaSharaf/QuranApp/releases/download/v1.4.1/app-release.apk
+
+### 23. Remove Domain Links, Add Upcoming Projects Text (v1.4.2) ✅
+
+#### Problem
+- About Us and Support Us screens displayed 3 project domain links (shegoz.top, guidano.us, learnvexo.com)
+- User wanted to remove all domain mentions and replace with a single elegant text about 3 upcoming projects
+
+#### Fix
+- Removed all 3 project domain link cards from AboutUsScreen (kept YouTube link)
+- Removed all 3 project domain links from SupportUsScreen projects section
+- Added "Our Upcoming Projects" section with description text in both screens
+- Text: "We are working on three innovative projects designed to bring ease and benefit to society. We will announce them soon, Insha Allah."
+- Added `upcomingProjects` and `upcomingProjectsDesc` translation keys in all 16 languages
+- Removed old `ourFirstProject` and `ourSecondProject` translation keys
+
+#### Files Modified
+- `src/i18n/translations.ts` — Replaced `ourFirstProject`/`ourSecondProject` with `upcomingProjects`/`upcomingProjectsDesc` in all 16 languages
+- `src/screens/AboutUsScreen.tsx` — Removed 3 project link cards, added upcoming projects text section, kept YouTube link
+- `src/screens/SupportUsScreen.tsx` — Replaced 3 project links with upcoming projects text, removed unused styles

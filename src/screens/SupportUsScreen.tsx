@@ -93,13 +93,18 @@ const SupportUsScreen: React.FC<SupportUsScreenProps> = ({ onBack }) => {
       'Watch Ads to Support Us',
       'Ad Space',
       'Google AdMob ads appear in the full build of the app',
-      'Our Projects',
       'Copied',
       'Copy',
       'Error',
       'Could not open Skrill. Email copied.',
       'Could not open PayPal. Link copied.',
     ]);
+    // Also translate the upcomingProjectsDesc for non-Arabic, non-English languages
+    if (appLanguage !== 'ar' && appLanguage !== 'en') {
+      translateUI([
+        'We are working on three innovative projects designed to bring ease and benefit to society. We will announce them soon, Insha Allah.',
+      ]);
+    }
   }, [appLanguage, needsTranslation]);
 
   const openLink = (url: string) => {
@@ -274,23 +279,16 @@ const SupportUsScreen: React.FC<SupportUsScreenProps> = ({ onBack }) => {
           {isArabicUI ? 'جزاكم الله خيراً 🤲' : ui(t('jazakumAllahuKhairan'))}
         </Text>
 
-        {/* Our Projects */}
+        {/* Our Upcoming Projects */}
         <View style={[styles.projectsBox, { backgroundColor: c.ayahBg, borderLeftColor: c.primary }]}>
           <Text style={[styles.projectsTitle, { color: c.primary }]}>
-            {isArabicUI ? 'مشاريعنا' : ui('Our Projects')}
+            {isArabicUI ? 'مشاريعنا القادمة' : ui(t('upcomingProjects'))}
           </Text>
-          <TouchableOpacity onPress={() => openLink('https://shegoz.top')} style={styles.projectLink}>
-            <Ionicons name="globe-outline" size={16} color={c.primary} />
-            <Text style={[styles.projectText, { color: c.text }]}>shegoz.top</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => openLink('https://guidano.us')} style={styles.projectLink}>
-            <Ionicons name="globe-outline" size={16} color={c.primary} />
-            <Text style={[styles.projectText, { color: c.text }]}>guidano.us</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => openLink('https://learnvexo.com')} style={styles.projectLink}>
-            <Ionicons name="globe-outline" size={16} color={c.primary} />
-            <Text style={[styles.projectText, { color: c.text }]}>learnvexo.com</Text>
-          </TouchableOpacity>
+          <Text style={[styles.projectsDesc, { color: c.textSecondary }]}>
+            {isArabicUI
+              ? 'نعمل على ثلاثة مشاريع مبتكرة تهدف إلى تسهيل الحياة وإفادة المجتمع. سنعلن عنها قريباً، إن شاء الله.'
+              : ui('We are working on three innovative projects designed to bring ease and benefit to society. We will announce them soon, Insha Allah.')}
+          </Text>
         </View>
       </ScrollView>
     </View>
@@ -389,13 +387,7 @@ const styles = StyleSheet.create({
     borderLeftWidth: 4,
   },
   projectsTitle: { fontSize: 15, fontWeight: 'bold', marginBottom: 10 },
-  projectLink: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    paddingVertical: 6,
-  },
-  projectText: { fontSize: 14 },
+  projectsDesc: { fontSize: 13, lineHeight: 20 },
 });
 
 export default SupportUsScreen;

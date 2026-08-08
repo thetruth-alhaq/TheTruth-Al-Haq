@@ -41,6 +41,7 @@
 - [x] **v1.4.0 — Media notification controls**: Quran and Ruqyah audio now shows in notification center / lock screen with pause/resume controls on both Android and iOS via `setActiveForLockScreen`
 - [x] **v1.4.0 — Background playback config**: Added `enableBackgroundPlayback: true` to expo-audio plugin in app.json
 - [x] **v1.4.1 — Lock screen pause/stop fix**: Fixed auto-resume overriding user's pause from lock screen; added playbackStatusUpdate listener to sync UI with lock screen controls
+- [x] **v1.4.2 — Remove domain links, add upcoming projects text**: Removed 3 project domain links from About Us and Support Us screens, replaced with elegant "upcoming projects" text in all 16 languages, kept YouTube link
 
 ### In Progress
 - [ ] Test on real devices: audio pre-download, streaming, background playback, AdMob banners, OTA updates
