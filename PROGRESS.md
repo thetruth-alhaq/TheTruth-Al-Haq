@@ -432,3 +432,7 @@
 - `src/i18n/translations.ts` — Replaced `ourFirstProject`/`ourSecondProject` with `upcomingProjects`/`upcomingProjectsDesc` in all 16 languages
 - `src/screens/AboutUsScreen.tsx` — Removed 3 project link cards, added upcoming projects text section, kept YouTube link
 - `src/screens/SupportUsScreen.tsx` — Replaced 3 project links with upcoming projects text, removed unused styles
+
+#### v1.4.2 Builds
+- **iOS IPA**: ❌ BLOCKED — EAS free plan build credits exhausted (resets Sep 1, 2026)
+- **Android APK**: ✅ SUCCESS — https://github.com/MahmoudMousaSharaf/QuranApp/releases/download/v1.4.2/app-release.apk

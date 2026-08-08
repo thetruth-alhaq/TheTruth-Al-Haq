@@ -65,6 +65,8 @@
 - GitHub Actions #20 (31275780094): **SUCCESS** — v1.4.0 Android APK — https://github.com/MahmoudMousaSharaf/QuranApp/releases/download/v1.4.0/app-release.apk
 - iOS Build #6 (1e9246c6): **SUCCESS** — v1.4.1 IPA with lock screen pause/stop fix — https://expo.dev/accounts/majmod/projects/the-truth-al-haq/builds/1e9246c6-fd31-44d4-bb01-077316f3ae7c
 - GitHub Actions #21 (31278474887): **SUCCESS** — v1.4.1 Android APK — https://github.com/MahmoudMousaSharaf/QuranApp/releases/download/v1.4.1/app-release.apk
+- iOS Build #7: **BLOCKED** — v1.4.2 EAS free plan credits exhausted (resets Sep 1, 2026)
+- GitHub Actions #22 (31281171814): **SUCCESS** — v1.4.2 Android APK — https://github.com/MahmoudMousaSharaf/QuranApp/releases/download/v1.4.2/app-release.apk
 
 ### Root Cause Analysis (Final)
 - **Actual root cause**: Two separate issues caused Android build failures:
