@@ -83,7 +83,7 @@ const PrayerTimesScreen: React.FC<PrayerTimesScreenProps> = ({ onBack }) => {
     setAdhanPlaying(isAdhanPlaying());
 
     setOnPlaybackStatusUpdate((status: any) => {
-      if (status.didJustFinish || (status.isLoaded === false)) {
+      if (status.didJustFinish) {
         setAdhanPlaying(false);
       } else if (status.isPlaying) {
         setAdhanPlaying(true);
