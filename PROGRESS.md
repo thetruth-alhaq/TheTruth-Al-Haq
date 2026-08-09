@@ -434,5 +434,6 @@
 - `src/screens/SupportUsScreen.tsx` — Replaced 3 project links with upcoming projects text, removed unused styles
 
 #### v1.4.2 Builds
-- **iOS IPA**: ❌ BLOCKED — EAS free plan build credits exhausted (resets Sep 1, 2026)
+- **iOS IPA**: ✅ SUCCESS (GitHub Actions macOS, `eas build --local`) — https://github.com/MahmoudMousaSharaf/QuranApp/releases/download/v1.4.2/TheTruthAlHaq.ipa
 - **Android APK**: ✅ SUCCESS — https://github.com/MahmoudMousaSharaf/QuranApp/releases/download/v1.4.2/app-release.apk
+- **OTA Update**: ✅ SUCCESS — Pushed to production branch, existing users get update on next launch
