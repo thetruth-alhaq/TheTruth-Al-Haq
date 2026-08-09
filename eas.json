@@ -18,9 +18,24 @@
       "android": {
         "buildType": "apk"
       }
+    },
+    "store": {
+      "android": {
+        "buildType": "app bundle"
+      }
     }
   },
   "submit": {
-    "production": {}
+    "production": {
+      "android": {
+        "serviceAccountKeyPath": "./google-service-account.json",
+        "track": "internal"
+      },
+      "ios": {
+        "appleId": "",
+        "ascAppId": "",
+        "appleTeamId": ""
+      }
+    }
   }
 }
