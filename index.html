@@ -31,9 +31,14 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#0f172a;color:#e2e8f
 .country-card:hover{background:#334155}
 .country-flag{font-size:1.3rem}
 .country-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#google_translate_element{position:fixed;top:10px;right:10px;z-index:1000}
+.goog-te-banner-frame{display:none !important}
+body{top:0 !important}
+.countries{border:1px solid #1e293b;border-top:3px solid #0d9488;border-radius:16px;margin:40px auto;background:#0f172a}
 </style>
 </head>
 <body>
+<div id="google_translate_element" style="position:fixed;top:10px;right:10px;z-index:1000;"></div>
 <div class="hero">
 <img src="app-icon.png" alt="The Truth - Al Haq" style="width:120px;height:120px;border-radius:24px;margin-bottom:20px;box-shadow:0 4px 20px rgba(0,0,0,0.4)">
 <h1>The Truth - Al Haq</h1>
@@ -44,20 +49,20 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#0f172a;color:#e2e8f
 </a>
 <p class="app-store-hint">Note: Change the country code <code>eg</code> in the URL above to your country code (e.g. <code>sa</code>, <code>ae</code>, <code>us</code>).<br>ملاحظة: غيّر رمز الدولة <code>eg</code> في الرابط أعلاه إلى رمز بلدك (مثل <code>sa</code> أو <code>ae</code> أو <code>us</code>).</p>
 </div>
-<div class="features">
-<div class="feature"><h3>Holy Quran</h3><p>Read and listen to the complete Quran with audio recitation.</p></div>
-<div class="feature"><h3>Prayer Times</h3><p>Accurate prayer times with Adhan alerts for your location.</p></div>
-<div class="feature"><h3>Qibla Direction</h3><p>Find the direction to Mecca from anywhere in the world.</p></div>
-<div class="feature"><h3>Azkar & Duas</h3><p>Morning and evening Azkar with daily Islamic remembrances.</p></div>
-<div class="feature"><h3>Hadith Collection</h3><p>Read authentic Hadith from major collections.</p></div>
-<div class="feature"><h3>Tasbih Counter</h3><p>Digital Tasbih counter to track your dhikr.</p></div>
-</div>
 <section class="countries">
 <h2>Download from your country</h2>
 <p>Choose your country to open its App Store</p>
 <input type="text" id="country-search" placeholder="Search country...">
 <div class="country-grid" id="country-grid"></div>
 </section>
+<div class="features">
+<div class="feature"><h3>Holy Quran</h3><p>Read and listen to the complete Quran with audio recitation.</p></div>
+<div class="feature"><h3>Prayer Times</h3><p>Accurate prayer times with Adhan alerts for your location.</p></div>
+<div class="feature"><h3>Qibla Direction</h3><p>Find the direction to Mecca from anywhere in the world.</p></div>
+<div class="feature"><h3>Azkar &amp; Duas</h3><p>Morning and evening Azkar with daily Islamic remembrances.</p></div>
+<div class="feature"><h3>Hadith Collection</h3><p>Read authentic Hadith from major collections.</p></div>
+<div class="feature"><h3>Tasbih Counter</h3><p>Digital Tasbih counter to track your dhikr.</p></div>
+</div>
 <div class="links">
 <a href="privacy-policy.html">Privacy Policy</a>
 <a href="support.html">Support</a>
@@ -65,6 +70,22 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#0f172a;color:#e2e8f
 <div class="footer">
 <p>The Truth - Al Haq &copy; 2026. All rights reserved.</p>
 </div>
+<script>
+(function(){
+  if (!document.cookie.includes('googtrans=')) {
+    const userLang = (navigator.language || 'en').split('-')[0];
+    if (userLang && userLang !== 'en') {
+      const value = '/en/' + userLang;
+      document.cookie = 'googtrans=' + encodeURIComponent(value) + '; path=/; domain=' + location.hostname;
+      document.cookie = 'googtrans=' + encodeURIComponent(value) + '; path=/';
+    }
+  }
+})();
+function googleTranslateElementInit(){
+  new google.translate.TranslateElement({pageLanguage:'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script src="countries.js"></script>
 <script>
 (function(){
