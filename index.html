@@ -22,6 +22,15 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#0f172a;color:#e2e8f
 .app-store-btn:hover{opacity:.9;text-decoration:none}
 .app-store-btn svg{width:24px;height:24px;fill:currentColor}
 .app-store-hint{max-width:600px;margin:15px auto 0;font-size:.85rem;color:#94a3b8}
+.countries{max-width:900px;margin:0 auto;padding:40px 20px}
+.countries h2{color:#0d9488;text-align:center;margin-bottom:10px;font-size:1.5rem}
+.countries p{color:#94a3b8;text-align:center;margin-bottom:20px}
+.countries input{width:100%;max-width:400px;display:block;margin:0 auto 20px;padding:10px 14px;border-radius:8px;border:1px solid #334155;background:#1e293b;color:#e2e8f0}
+.country-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;max-height:400px;overflow-y:auto;padding-right:8px}
+.country-card{display:flex;align-items:center;gap:8px;padding:10px;background:#1e293b;border-radius:8px;text-decoration:none;color:#e2e8f0;font-size:.8rem;transition:background .2s}
+.country-card:hover{background:#334155}
+.country-flag{font-size:1.3rem}
+.country-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 </style>
 </head>
 <body>
@@ -43,6 +52,12 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#0f172a;color:#e2e8f
 <div class="feature"><h3>Hadith Collection</h3><p>Read authentic Hadith from major collections.</p></div>
 <div class="feature"><h3>Tasbih Counter</h3><p>Digital Tasbih counter to track your dhikr.</p></div>
 </div>
+<section class="countries">
+<h2>Download from your country</h2>
+<p>Choose your country to open its App Store</p>
+<input type="text" id="country-search" placeholder="Search country...">
+<div class="country-grid" id="country-grid"></div>
+</section>
 <div class="links">
 <a href="privacy-policy.html">Privacy Policy</a>
 <a href="support.html">Support</a>
@@ -50,6 +65,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#0f172a;color:#e2e8f
 <div class="footer">
 <p>The Truth - Al Haq &copy; 2026. All rights reserved.</p>
 </div>
+<script src="countries.js"></script>
 <script>
 (function(){
   const lang = navigator.language || 'en-EG';
