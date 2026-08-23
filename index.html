@@ -18,6 +18,9 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#0f172a;color:#e2e8f
 .links{display:flex;gap:20px;justify-content:center;margin-top:20px}
 .links a{color:#0d9488;text-decoration:none}
 .links a:hover{text-decoration:underline}
+.portfolio-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#0d9488,#0f172a);color:#fff;padding:12px 24px;border-radius:10px;text-decoration:none;font-weight:600;margin-top:15px;transition:opacity .2s}
+.portfolio-btn:hover{opacity:.9}
+.portfolio-btn svg{width:20px;height:20px;fill:currentColor}
 .app-store-btn{display:inline-flex;align-items:center;gap:10px;background:#000;color:#fff;padding:12px 24px;border-radius:10px;text-decoration:none;font-weight:600;margin-top:20px;transition:opacity .2s}
 .app-store-btn:hover{opacity:.9;text-decoration:none}
 .app-store-btn svg{width:24px;height:24px;fill:currentColor}
@@ -48,6 +51,10 @@ body{top:0 !important}
 <span>Download on the App Store</span>
 </a>
 <p class="app-store-hint">Note: Change the country code <code>eg</code> in the URL above to your country code (e.g. <code>sa</code>, <code>ae</code>, <code>us</code>).<br>ملاحظة: غيّر رمز الدولة <code>eg</code> في الرابط أعلاه إلى رمز بلدك (مثل <code>sa</code> أو <code>ae</code> أو <code>us</code>).</p>
+<a class="portfolio-btn" href="https://apprepo-maker.github.io/My-Portfolio-Pages/" target="_blank" rel="noopener">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+<span>Developer Portfolio</span>
+</a>
 </div>
 <section class="countries">
 <h2>Download from your country</h2>
