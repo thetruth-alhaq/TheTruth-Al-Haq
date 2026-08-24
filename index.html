@@ -27,6 +27,15 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#0f172a;color:#e2e8f
 .app-store-btn:hover{opacity:.9;text-decoration:none}
 .app-store-btn svg{width:24px;height:24px;fill:currentColor}
 .app-store-hint{max-width:600px;margin:15px auto 0;font-size:.85rem;color:#94a3b8}
+.downloads{max-width:900px;margin:0 auto;padding:40px 20px;text-align:center}
+.downloads h2{color:#0d9488;margin-bottom:15px;font-size:1.5rem}
+.downloads p{color:#94a3b8;margin-bottom:20px;font-size:.95rem}
+.download-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;justify-items:center}
+.download-card{display:flex;flex-direction:column;align-items:center;gap:10px;background:#1e293b;border:1px solid #334155;border-radius:16px;padding:20px;max-width:360px}
+.download-card h3{color:#e2e8f0;font-size:1.1rem}
+.download-card p{color:#94a3b8;font-size:.85rem}
+.download-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#0d9488,#0f766e);color:#fff;padding:10px 20px;border-radius:10px;text-decoration:none;font-weight:600;transition:opacity .2s}
+.download-btn:hover{opacity:.9;text-decoration:none}
 .countries{max-width:900px;margin:0 auto;padding:40px 20px}
 .countries h2{color:#0d9488;text-align:center;margin-bottom:10px;font-size:1.5rem}
 .countries p{color:#94a3b8;text-align:center;margin-bottom:20px}
@@ -58,6 +67,27 @@ body{top:0 !important}
 <span>Developer Portfolio</span>
 </a>
 </div>
+<section class="downloads">
+<h2>Download the app</h2>
+<p>The old GitHub release links are no longer available. Here are the current Expo build artifacts.</p>
+<div class="download-grid">
+<div class="download-card">
+<h3>iOS — build 12 (v1.5.0)</h3>
+<p>iPhone / iPad App Store archive (IPA). Download the latest build from Expo.</p>
+<a class="download-btn" href="https://expo.dev/artifacts/eas/gfR9yLqw3jMRDpCqI9S_Hunr3PN8cTuUWQuQ_G6X_p0.ipa" target="_blank" rel="noopener">Download iOS IPA</a>
+</div>
+<div class="download-card">
+<h3>Android — build 12 (v1.5.0)</h3>
+<p>Play Store bundle (AAB). Upload this to Google Play or sideload with bundletool.</p>
+<a class="download-btn" href="https://expo.dev/artifacts/eas/ZDwdx8nCpySBP_3x8BGImJk4MvMeeHWXi02MGf-ngHo.aab" target="_blank" rel="noopener">Download Android AAB</a>
+</div>
+<div class="download-card">
+<h3>Android — direct install APK</h3>
+<p>Latest installable APK from Expo (build 9, v1.5.0). Enable "Unknown sources" to install.</p>
+<a class="download-btn" href="https://expo.dev/artifacts/eas/XSV8WGFl-_kf2pdQwVnDePV4uT5rH1rP5NIxhADynYc.apk" target="_blank" rel="noopener">Download Android APK</a>
+</div>
+</div>
+</section>
 <section class="countries">
 <h2>Download from your country</h2>
 <p>Choose your country to open its App Store</p>
