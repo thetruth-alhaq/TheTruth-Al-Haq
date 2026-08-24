@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Truth - Al Haq</title>
+<link rel="icon" type="image/png" href="app-icon.png">
+<link rel="apple-touch-icon" href="app-icon.png">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Segoe UI',system-ui,sans-serif;background:#0f172a;color:#e2e8f0;line-height:1.6}
@@ -59,8 +61,10 @@ body{top:0 !important}
 <section class="countries">
 <h2>Download from your country</h2>
 <p>Choose your country to open its App Store</p>
-<input type="text" id="country-search" placeholder="Search country...">
-<div class="country-grid" id="country-grid"></div>
+<input type="text" id="country-search" placeholder="Search country..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" translate="no" class="notranslate">
+<div class="country-grid notranslate" id="country-grid" translate="no"></div>
+<h3 class="ar-heading" translate="no" style="text-align:center;color:#0d9488;margin:20px 0 10px;font-size:1.2rem;">الدول</h3>
+<div class="country-grid notranslate" id="country-grid-ar" dir="rtl" translate="no"></div>
 </section>
 <div class="features">
 <div class="feature"><h3>Holy Quran</h3><p>Read and listen to the complete Quran with audio recitation.</p></div>

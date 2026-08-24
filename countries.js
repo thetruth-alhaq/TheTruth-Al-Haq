@@ -152,26 +152,61 @@ const countries = [
   { name: 'Zimbabwe', code: 'zw', flag: '🇿🇼' }
 ];
 
+const regionNames = typeof Intl !== 'undefined' ? new Intl.DisplayNames(['ar'], { type: 'region' }) : null;
+countries.forEach(c => {
+  try {
+    c.ar = regionNames ? regionNames.of(c.code.toUpperCase()) : '';
+  } catch (e) {
+    c.ar = '';
+  }
+});
+
+function matchCountry(c, term) {
+  if (!term) return true;
+  const t = term.toLowerCase().trim();
+  return c.name.toLowerCase().includes(t) ||
+    (c.ar && c.ar.includes(t)) ||
+    c.code.toLowerCase().includes(t);
+}
+
 function renderCountries(filter = '') {
   const grid = document.getElementById('country-grid');
+  const gridAr = document.getElementById('country-grid-ar');
   if (!grid) return;
   const term = filter.toLowerCase().trim();
   const filtered = term
-    ? countries.filter(c => c.name.toLowerCase().includes(term))
+    ? countries.filter(c => matchCountry(c, term))
     : countries;
 
   grid.innerHTML = filtered.map(c => `
-    <a class="country-card" href="https://apps.apple.com/${c.code}/app/${APP_SLUG}/${APP_ID}" target="_blank" rel="noopener" title="${c.name}">
-      <span class="country-flag">${c.flag}</span>
-      <span class="country-name">${c.name}</span>
+    <a class="country-card notranslate" translate="no" href="https://apps.apple.com/${c.code}/app/${APP_SLUG}/${APP_ID}" target="_blank" rel="noopener" title="${c.name}">
+      <span class="country-flag notranslate" translate="no">${c.flag}</span>
+      <span class="country-name notranslate" translate="no">${c.name}</span>
     </a>
   `).join('');
+
+  if (gridAr) {
+    gridAr.innerHTML = filtered.map(c => `
+      <a class="country-card notranslate" translate="no" dir="rtl" lang="ar" href="https://apps.apple.com/${c.code}/app/${APP_SLUG}/${APP_ID}" target="_blank" rel="noopener" title="${c.ar || c.name}">
+        <span class="country-flag notranslate" translate="no">${c.flag}</span>
+        <span class="country-name notranslate" translate="no">${c.ar || c.name}</span>
+      </a>
+    `).join('');
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   renderCountries();
   const search = document.getElementById('country-search');
   if (search) {
-    search.addEventListener('input', (e) => renderCountries(e.target.value));
+    const handleInput = (e) => {
+      if (e && e.target) {
+        renderCountries(e.target.value);
+      }
+    };
+    search.addEventListener('input', handleInput);
+    search.addEventListener('compositionend', handleInput);
+    search.addEventListener('keyup', handleInput);
+    search.addEventListener('change', handleInput);
   }
 });
