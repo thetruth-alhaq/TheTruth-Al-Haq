@@ -1,6 +1,6 @@
 # AI Handoff — TheTruth-Al-Haq Website
 
-> Last updated: 2026-08-24
+> Last updated: 2026-08-25
 > For the next AI / developer taking over this project.
 
 ## Project Overview
@@ -58,7 +58,7 @@ The user can change `eg` to `sa`, `ae`, `us`, etc., or use the country search se
 
 ## Related Repos & Resources
 
-- App source repo: https://github.com/thetruth-alhaq/QuranApp
+- App source repo: https://github.com/APPRepo-maker/qur (local `E:\quran-app`)
 - GitHub release repo (binaries): https://github.com/thetruth-alhaq/v1.5.0-build12
 - Release tag: `v1.5.0-build12`
 - Release ID: `375794225`
@@ -185,6 +185,7 @@ To show them again, remove the `hidden` token from those class attributes in `in
 4. Removed em dashes from iOS and Android card headings.
 5. Temporarily hid `Developer Portfolio` and `Download the app` sections on user request.
 6. Created AI handoff docs in both app and website repos.
+7. Android Play Store policy work: started foreground service declaration for `FOREGROUND_SERVICE_MEDIA_PLAYBACK`; began Data Safety Advertising ID declaration; identified `RECORD_AUDIO` cleanup needed for next AAB.
 
 ## Local Project Paths
 
@@ -200,6 +201,15 @@ To show them again, remove the `hidden` token from those class attributes in `in
 - **Expo session secret** is in `C:\Users\pc\.expo\state.json` and must not be committed.
 - **Android keystore** was downloaded via Expo GraphQL during this session and deleted.
 - **Apple Developer credentials** (Apple ID + app-specific password) are needed for EAS iOS submit.
+
+## Play Console / Android Compliance Notes
+
+Because the website hosts the public privacy policy and support URLs used by the Play Store, these items are linked:
+
+- **Privacy policy URL:** `https://thetruth-alhaq.github.io/TheTruth-Al-Haq/privacy-policy.html` (must stay live).
+- **Data Safety form (Play Console website):** the app must declare **Advertising ID** collection due to the AdMob banner in `SupportUsScreen.tsx`. No code/website change; fill form on Play Console.
+- **Foreground service media playback declaration:** requires a short YouTube video showing background Quran/Ruqyah audio playback. No website change.
+- **Next AAB cleanup:** `RECORD_AUDIO` and `MODIFY_AUDIO_SETTINGS` need to be removed from `app.json` and `RECORD_AUDIO` blocked, because the app only plays audio and never records.
 
 ## How to Update the Website
 
