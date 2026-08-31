@@ -68,3 +68,4 @@ If this website goes down, Apple App Store submission will be rejected (URLs mus
 
 ## Last Updated
 - August 15, 2026: Re-enabled GitHub Pages after repo visibility change caused 404
+- August 31, 2026: Updated `privacy-policy.html` to disclose AdMob advertising identifier, location usage, and that the app is not a medical device and does not collect health data. Updated `index.html` availability message to "Now available on Google Play".
