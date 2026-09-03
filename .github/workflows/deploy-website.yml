@@ -7,6 +7,7 @@ on:
       - 'index.html'
       - 'privacy-policy.html'
       - 'support.html'
+      - 'app-ads.txt'
       - 'app-icon.png'
       - '.github/workflows/deploy-website.yml'
   workflow_dispatch:
@@ -32,6 +33,7 @@ jobs:
           cp $GITHUB_WORKSPACE/index.html .
           cp $GITHUB_WORKSPACE/privacy-policy.html .
           cp $GITHUB_WORKSPACE/support.html .
+          cp $GITHUB_WORKSPACE/app-ads.txt .
           cp $GITHUB_WORKSPACE/app-icon.png .
           
           git add -A
